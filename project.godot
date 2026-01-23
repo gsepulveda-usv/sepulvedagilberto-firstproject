@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="Intro To Game Engines"
+run/main_scene="uid://bf0y3vwdyojnt"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor]
+
+movie_writer/ogv/audio_quality=0.75
+movie_writer/ogv/encoding_speed=2
+movie_writer/ogv/keyframe_interval=30
+movie_writer/movie_file="C:/Users/sepic/Documents/Godot/intro-to-game-engines/movies/demo.avi"
 
 [rendering]
 

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2q3dkgyitacx"]
+
+[ext_resource type="Texture2D" uid="uid://bwtjse4p38uq8" path="res://assets/tilesets/back.png" id="2_bhu08"]
+
+[sub_resource type="Theme" id="Theme_0qies"]
+
+[node name="FirstProject_01" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+
+[node name="Background" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(-1.1444092e-05, -2.1457672e-06)
+scale = Vector2(0.7083334, 0.6666667)
+texture = ExtResource("2_bhu08")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background"]
+position = Vector2(272, -2.1457672e-06)
+scale = Vector2(0.7083334, 0.6666667)
+texture = ExtResource("2_bhu08")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 75.0
+offset_bottom = -32.0
+theme = SubResource("Theme_0qies")
+text = "Gilberto Sepulveda"
