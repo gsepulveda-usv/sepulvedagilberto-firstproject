@@ -1,5 +1,11 @@
 extends "res://scripts/killzone.gd"
 
+func respawn():
+	took_damage = true
+	self.visible = false
+	can_move = false
+	await get_tree().create_timer(0.5).timeout
+
 func _on_area_2d_body_entered(body):
 	print("Oh no! You died!")
 	Engine.time_scale = 0.5

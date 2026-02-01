@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -300.0
@@ -7,16 +7,12 @@ var score = 0
 var dead = false
 var can_move = true
 var took_damage = false
-var stomp_impulse := 300
-
-var is_dead : bool = false:
-	set(value): 
-		if value:
-			animated_sprite.play("dead")
-			await animated_sprite.animation_finished
-			get_tree().reload_current_scene()
+var is_dead = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+func bounce_after_stomp():
+	velocity.y = -300
 
 func respawn():
 	took_damage = true
@@ -32,13 +28,6 @@ func respawn():
 	
 	took_damage = false
 	
-	await get_tree().create_timer(0.5).timeout
-	
-	took_damage = false
-
-func is_stomping():
-	velocity.y = -stomp_impulse
-
 func death():
 	animated_sprite.play("dead")
 	
@@ -68,7 +57,7 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("run")
 	else:
 		animated_sprite.play("jump")
-	
+
 	# Apply movement
 	if direction:
 		velocity.x = direction * SPEED

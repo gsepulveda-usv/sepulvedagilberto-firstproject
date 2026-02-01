@@ -69,7 +69,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jaocx")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 8.0
 }, {
@@ -101,10 +101,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x214e"]
-size = Vector2(11.461704, 6.5360126)
+size = Vector2(12.704397, 6.5360126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8oix"]
-size = Vector2(9.614571, 4.5941544)
+size = Vector2(9.614571, 1.2990274)
 
 [node name="enemy_green" type="Area2D"]
 collision_layer = 4
@@ -114,20 +114,30 @@ script = ExtResource("1_kjinu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_5wi7k")
-animation = &"walk"
+animation = &"dead"
 autoplay = "walk"
-frame_progress = 0.98449945
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.0807364, -3.4356146)
+position = Vector2(0.0031261444, -3.4356146)
 shape = SubResource("RectangleShape2D_x214e")
 
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0.05209732, -4.688879)
+target_position = Vector2(7, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0.05209732, -4.688879)
+target_position = Vector2(-7, 0)
+
 [node name="HitArea" type="Area2D" parent="."]
-collision_layer = 4
+position = Vector2(18.755514, 8.439981)
+collision_layer = 2
 collision_mask = 3
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
-position = Vector2(0.15177917, -8.7638855)
+position = Vector2(-18.760033, -15.816795)
 shape = SubResource("RectangleShape2D_v8oix")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

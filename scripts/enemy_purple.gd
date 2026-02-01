@@ -1,38 +1,33 @@
-extends Node2D
+extends Area2D
 class_name Enemy 
 
-const SPEED = 15
+const SPEED = 30
 var direction = 1
-@onready var player: CharacterBody2D = $"."
-@onready var ray_cast_right: RayCast2D = $CollisionShape2D/RayCast_Right
-@onready var ray_cast_left: RayCast2D = $CollisionShape2D/RayCast_Left
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var timer: Timer = $Timer
+var velocity = Vector2.ZERO
+var speed = 300
+var health = 3
 var is_dead = false
+var is_on_floor: bool = false
+@onready var ray_cast_right = $CollisionShape2D/RayCast_Right
+@onready var ray_cast_left = $CollisionShape2D/RayCast_Left
+@onready var animated_sprite = $AnimatedSprite2D
 
-func _on_timer_timeout():
-	get_tree().reload_current_scene()
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	get_tree().reload_current_scene()
+func _process(delta: float) -> void:
+	if ray_cast_right.is_colliding():
+		direction = -1
+		animated_sprite.flip_h = true
+	if ray_cast_left.is_colliding():
+		direction = 1
+		animated_sprite.flip_h = false
 	
-func _physics_process(_delta: float) -> void:
-	global_position = player.global_position
-	player.position = global_position + Vector2(0,0)
-
-func _on_area_2d_body_entered(_body: Node2D) -> void:
-	if _body.name == "Player" and is_dead == false:
-		get_tree().reload_current_scene()
-	print("Killed by Enemy!")
-	timer.start()
+	position.x += direction * SPEED * delta
 	
 func _on_hit_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and is_dead == false:
-		
-		print("Enemy", global_position.y)
-		print("Player", str(int(body.global_position.y)))
-	
-	if int(body.global_position.y + 8) < int(global_position.y) :
-		is_dead = true
-		
-	
+		body.bounce_after_stomp()
+		health -= 1
+	print("Enemy hit! Remaining health: ", health)
+	if health <= 0:
+		$AnimatedSprite2D.play("dead")
+	await $AnimatedSprite2D.animation_finished		
+	queue_free()

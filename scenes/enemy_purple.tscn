@@ -69,7 +69,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dkwtm")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 8.0
 }, {
@@ -101,34 +101,35 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5x804"]
-size = Vector2(9.903049, 8.948469)
+size = Vector2(35.81083, 23.953241)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymom7"]
-size = Vector2(10.527576, 9.266787)
+size = Vector2(29.44241, 1.5759835)
 
-[node name="Purple Enemy" type="CharacterBody2D"]
+[node name="Purple Enemy" type="Area2D"]
 collision_layer = 4
 script = ExtResource("1_ymom7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_wqqun")
-animation = &"walk"
+animation = &"dead"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.039125443, -4.4742346)
+position = Vector2(0.1434555, 3.9107027)
 shape = SubResource("RectangleShape2D_5x804")
 
 [node name="RayCast_Right" type="RayCast2D" parent="CollisionShape2D"]
 position = Vector2(-0.039125443, 0.13632488)
-target_position = Vector2(8.741524, -0.066589355)
+target_position = Vector2(21, 0)
 collision_mask = 3
 collide_with_areas = true
 
 [node name="RayCast_Left" type="RayCast2D" parent="CollisionShape2D"]
 position = Vector2(-0.039125443, 0.13632488)
-target_position = Vector2(-8.702412, 0.11800289)
+target_position = Vector2(-21, 0)
 collision_mask = 3
 collide_with_areas = true
 
@@ -137,7 +138,7 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
-position = Vector2(0.10949135, -4.570819)
+position = Vector2(0.09731102, -9.235731)
 shape = SubResource("RectangleShape2D_ymom7")
 
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
