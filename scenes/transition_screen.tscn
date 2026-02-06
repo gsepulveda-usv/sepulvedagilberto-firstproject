@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://p0ig8ehvntnm"]
+
+[ext_resource type="Texture2D" uid="uid://bwtjse4p38uq8" path="res://assets/tilesets/back.png" id="1_12c8c"]
+[ext_resource type="Script" uid="uid://cn81qku604qm0" path="res://scripts/transition_screen.gd" id="1_jweab"]
+
+[node name="TransitionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jweab")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.999969, 2.6999075)
+texture = ExtResource("1_12c8c")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 409.0
+offset_top = 228.0
+offset_right = 716.0
+offset_bottom = 353.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2037228, 1.3628255)
+theme_override_colors/font_color = Color(0.00011382803, 0.00011382803, 0.00011382803, 1)
+theme_override_font_sizes/font_size = 44
+text = "Level 1
+It's Slime Time"
+horizontal_alignment = 1

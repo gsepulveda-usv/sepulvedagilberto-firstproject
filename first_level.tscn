@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=4 uid="uid://bf0y3vwdyojnt"]
+[gd_scene load_steps=39 format=4 uid="uid://bf0y3vwdyojnt"]
 
 [ext_resource type="Texture2D" uid="uid://bwtjse4p38uq8" path="res://assets/tilesets/back.png" id="1_5puvx"]
 [ext_resource type="Script" uid="uid://dgnvng4wlx7wx" path="res://scripts/killzone.gd" id="1_vag3g"]
+[ext_resource type="Script" uid="uid://q8s7aq0pgc8f" path="res://scripts/game_manager.gd" id="2_5s1t1"]
 [ext_resource type="PackedScene" uid="uid://bjtfx7do5cglh" path="res://scenes/player.tscn" id="2_fnyhn"]
 [ext_resource type="Texture2D" uid="uid://dlmpan5dhgq0o" path="res://assets/tilesets/tileset.png" id="3_7m365"]
 [ext_resource type="PackedScene" uid="uid://c0gwspm3jyx6r" path="res://scenes/platform_barrel.tscn" id="4_5nl2g"]
@@ -14,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://c5g5gt60l4jp1" path="res://scenes/enemy_green.tscn" id="9_vag3g"]
 [ext_resource type="PackedScene" uid="uid://cjqq2nyiivkrt" path="res://scenes/killzone.tscn" id="12_an01n"]
 [ext_resource type="PackedScene" uid="uid://dawdaj0m5ptnp" path="res://scenes/enemy_purple.tscn" id="14_7rpwa"]
+[ext_resource type="PackedScene" uid="uid://cnjtavqerstkk" path="res://scenes/menu.tscn" id="15_ftusf"]
+[ext_resource type="PackedScene" uid="uid://dojkudmy8ydx5" path="res://scenes/options_menu.tscn" id="16_8laww"]
+[ext_resource type="Texture2D" uid="uid://bmtqjrrica4dr" path="res://assets/items/coin_single.png" id="17_8laww"]
 
 [sub_resource type="Theme" id="Theme_0qies"]
 
@@ -665,6 +669,119 @@ size = Vector2(143.87457, 10.948349)
 [node name="FirstProject_01" type="Node2D"]
 script = ExtResource("1_vag3g")
 
+[node name="GameManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_5s1t1")
+
+[node name="UIManager" type="CanvasLayer" parent="."]
+layer = 5
+follow_viewport_enabled = true
+
+[node name="CoinIcon" type="TextureRect" parent="UIManager"]
+anchors_preset = -1
+anchor_left = -0.08652416
+anchor_top = -0.06102922
+anchor_right = -0.08011331
+anchor_bottom = -0.049543515
+offset_right = 868.6147
+offset_bottom = 869.55725
+scale = Vector2(0.008430705, 0.0084865885)
+texture = ExtResource("17_8laww")
+
+[node name="CoinCounter" type="Label" parent="UIManager"]
+anchors_preset = -1
+anchor_left = -0.08009299
+anchor_top = -0.06646601
+anchor_right = -0.04737101
+anchor_bottom = -0.047029026
+offset_left = 2.22966
+offset_right = 33.533943
+offset_bottom = 10.404837
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5463147, 0.5476159)
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+
+[node name="CoinIcon2" type="TextureRect" parent="UIManager"]
+anchors_preset = -1
+anchor_left = -0.08652416
+anchor_top = -0.06102922
+anchor_right = -0.08011331
+anchor_bottom = -0.049543515
+offset_left = 937.2001
+offset_top = -49.5
+offset_right = 1805.8148
+offset_bottom = 820.05725
+scale = Vector2(0.008430705, 0.0084865885)
+texture = ExtResource("17_8laww")
+
+[node name="CoinCounter2" type="Label" parent="UIManager"]
+anchors_preset = -1
+anchor_left = -0.08009299
+anchor_top = -0.06646601
+anchor_right = -0.04737101
+anchor_bottom = -0.047029026
+offset_left = 981.6802
+offset_top = -48.81534
+offset_right = 1030.9844
+offset_bottom = -38.410507
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5463147, 0.5476159)
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+
+[node name="Midway" type="Label" parent="UIManager"]
+offset_left = 847.5549
+offset_top = -91.72979
+offset_right = 925.5549
+offset_bottom = -68.72979
+scale = Vector2(0.53135616, 0.53128594)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Midway = "
+
+[node name="CoinIcon3" type="TextureRect" parent="UIManager"]
+anchors_preset = -1
+anchor_left = -0.08652416
+anchor_top = -0.06102922
+anchor_right = -0.08011331
+anchor_bottom = -0.049543515
+offset_left = 1893.1001
+offset_top = -83.600006
+offset_right = 2761.7148
+offset_bottom = 785.9572
+scale = Vector2(0.008430705, 0.0084865885)
+texture = ExtResource("17_8laww")
+
+[node name="CoinCounter3" type="Label" parent="UIManager"]
+anchors_preset = -1
+anchor_left = -0.08009299
+anchor_top = -0.06646601
+anchor_right = -0.04737101
+anchor_bottom = -0.047029026
+offset_left = 1939.0809
+offset_top = -82.55582
+offset_right = 2001.3853
+offset_bottom = -72.150986
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5463147, 0.5476159)
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+
+[node name="End Level" type="Label" parent="UIManager"]
+offset_left = 1801.7
+offset_top = -125.101654
+offset_right = 1892.7
+offset_bottom = -102.101654
+scale = Vector2(0.48946083, 0.48726434)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "End Level = "
+
 [node name="Background" type="StaticBody2D" parent="."]
 position = Vector2(7, 0)
 
@@ -908,6 +1025,15 @@ position = Vector2(1688, -48)
 [node name="Coin29" parent="Collectible Coins" instance=ExtResource("9_rfkqk")]
 position = Vector2(1704, -48)
 
+[node name="Coin30" parent="Collectible Coins" instance=ExtResource("9_rfkqk")]
+position = Vector2(1464, -96)
+
+[node name="Coin31" parent="Collectible Coins" instance=ExtResource("9_rfkqk")]
+position = Vector2(1480, -96)
+
+[node name="Coin32" parent="Collectible Coins" instance=ExtResource("9_rfkqk")]
+position = Vector2(1496, -96)
+
 [node name="Collectible Fruits" type="Node" parent="."]
 
 [node name="Fruit" parent="Collectible Fruits" instance=ExtResource("8_ehg42")]
@@ -925,20 +1051,19 @@ position = Vector2(728, -56)
 [node name="Fruit5" parent="Collectible Fruits" instance=ExtResource("8_ehg42")]
 position = Vector2(1064, -24)
 
+[node name="Fruit6" parent="Collectible Fruits" instance=ExtResource("8_ehg42")]
+position = Vector2(1568, -96)
+
 [node name="Killzone" parent="." instance=ExtResource("12_an01n")]
 position = Vector2(456, 112)
 
-[node name="Coin" parent="." instance=ExtResource("9_rfkqk")]
-position = Vector2(1464, -96)
-
-[node name="Coin2" parent="." instance=ExtResource("9_rfkqk")]
-position = Vector2(1480, -96)
-
-[node name="Coin3" parent="." instance=ExtResource("9_rfkqk")]
-position = Vector2(1496, -96)
-
-[node name="Fruit" parent="." instance=ExtResource("8_ehg42")]
-position = Vector2(1568, -96)
-
 [node name="Purple Enemy" parent="." instance=ExtResource("14_7rpwa")]
 position = Vector2(1968, -48)
+
+[node name="Menus" type="Node2D" parent="."]
+
+[node name="Main menu" parent="Menus" instance=ExtResource("15_ftusf")]
+visible = false
+
+[node name="Options" parent="Menus" instance=ExtResource("16_8laww")]
+visible = false

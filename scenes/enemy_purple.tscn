@@ -106,7 +106,7 @@ size = Vector2(35.81083, 23.953241)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymom7"]
 size = Vector2(29.44241, 1.5759835)
 
-[node name="Purple Enemy" type="Area2D"]
+[node name="Purple Enemy" type="Area2D" groups=["enemies"]]
 collision_layer = 4
 script = ExtResource("1_ymom7")
 

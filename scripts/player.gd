@@ -8,6 +8,7 @@ var dead = false
 var can_move = true
 var took_damage = false
 var is_dead = false
+var health = 1
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -69,3 +70,7 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
+func _on_hit_box_body_entered(_body: Node2D) -> void:
+	$AnimatedSprite2D.play("dead")
+	await $AnimatedSprite2D.animation_finished
+	queue_free()

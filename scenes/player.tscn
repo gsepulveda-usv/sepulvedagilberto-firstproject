@@ -165,7 +165,7 @@ animations = [{
 size = Vector2(12.321331, 12.7797985)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
-size = Vector2(13.811352, 15.220272)
+size = Vector2(15.942028, 15.220272)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
@@ -195,14 +195,15 @@ stream = ExtResource("3_dqkch")
 volume_db = -10.0
 panning_strength = 0.5
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["player"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("3_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(1.1308346, -7.6372395)
+position = Vector2(1.208643, -7.6372395)
 shape = SubResource("RectangleShape2D_qlg0r")
 debug_color = Color(0.8938386, 0.1279087, 0.7197447, 0.41960785)
 
 [connection signal="screen_exited" from="AnimatedSprite2D/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

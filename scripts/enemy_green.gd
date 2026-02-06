@@ -7,6 +7,7 @@ var speed = 300
 var health = 1
 var is_dead = false
 var is_on_floor: bool = false
+var bounce_after_stomp = false
 @onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_left = $RayCastLeft
 @onready var animated_sprite = $AnimatedSprite2D
@@ -27,3 +28,9 @@ func _on_hit_area_body_entered(body: Node2D) -> void:
 		$AnimatedSprite2D.play("dead")
 		await $AnimatedSprite2D.animation_finished
 		queue_free()
+
+func _on_kill_box_body_entered(body: Node2D) -> void:
+	if body is TileMapLayer or body is AnimatedSprite2D or body is CollisionShape2D:
+		body.is_on_floor = true
+		body.is_dead = true
+		
