@@ -1,36 +1,14 @@
 extends CharacterBody2D
-class_name Player
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -300.0
-var score = 0
-var dead = false
-var can_move = true
-var took_damage = false
 var is_dead = false
-var health = 1
+var pos = Vector2(23, 47)  # initial position
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func bounce_after_stomp():
 	velocity.y = -300
-
-func respawn():
-	took_damage = true
-	self.visible = false
-	can_move = false
-	await get_tree().create_timer(0.5).timeout
-	
-	self.global_position = Vector2(0,1)
-	self.visible = true
-	can_move = true
-	
-	await get_tree().create_timer(0.5).timeout
-	
-	took_damage = false
-	
-func death():
-	animated_sprite.play("dead")
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -41,7 +19,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction: -1, 0, 1
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	# Flip the Sprite
@@ -58,21 +37,16 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("run")
 	else:
 		animated_sprite.play("jump")
-
-	# Apply movement
+	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if can_move == false:
-		return 
-		
 	move_and_slide()
+
+func killPlayer():
+	pos = %RespawnPoint.position
 	
 func _on_hit_box_body_entered(_body: Node2D) -> void:
-	if is_dead == false:
-		is_dead = true
-	$AnimatedSprite2D.play("dead")
-	await $AnimatedSprite2D.animation_finished
-	queue_free() 
+	killPlayer()

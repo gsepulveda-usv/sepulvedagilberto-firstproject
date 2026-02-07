@@ -108,13 +108,15 @@ size = Vector2(29.44241, 1.5759835)
 
 [node name="Purple Enemy" type="Area2D" groups=["enemies"]]
 collision_layer = 4
+collision_mask = 3
+collision_priority = 5.0
 script = ExtResource("1_ymom7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
-scale = Vector2(3, 3)
+scale = Vector2(3.2, 3.2)
 sprite_frames = SubResource("SpriteFrames_wqqun")
-animation = &"dead"
+animation = &"walk"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -122,13 +124,13 @@ position = Vector2(0.1434555, 3.9107027)
 shape = SubResource("RectangleShape2D_5x804")
 
 [node name="RayCast_Right" type="RayCast2D" parent="CollisionShape2D"]
-position = Vector2(-0.039125443, 0.13632488)
+position = Vector2(1.6222019, 0.13632488)
 target_position = Vector2(21, 0)
 collision_mask = 3
 collide_with_areas = true
 
 [node name="RayCast_Left" type="RayCast2D" parent="CollisionShape2D"]
-position = Vector2(-0.039125443, 0.13632488)
+position = Vector2(-1.885046, 0.13632488)
 target_position = Vector2(-21, 0)
 collision_mask = 3
 collide_with_areas = true

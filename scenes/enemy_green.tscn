@@ -113,6 +113,7 @@ size = Vector2(15.692577, 7.3686857)
 [node name="enemy_green" type="Area2D"]
 collision_layer = 4
 collision_mask = 3
+collision_priority = 5.0
 script = ExtResource("1_kjinu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -137,8 +138,9 @@ target_position = Vector2(-7, 0)
 
 [node name="HitArea" type="Area2D" parent="."]
 position = Vector2(18.755514, 8.439981)
-collision_layer = 4
+collision_layer = 5
 collision_mask = 2
+collision_priority = 5.0
 
 [node name="HitBox" type="CollisionShape2D" parent="HitArea"]
 position = Vector2(-18.760033, -15.816795)
@@ -147,6 +149,7 @@ shape = SubResource("RectangleShape2D_v8oix")
 [node name="KillBox" type="Area2D" parent="." groups=["enemies"]]
 collision_layer = 4
 collision_mask = 2
+collision_priority = 5.0
 script = ExtResource("3_4u050")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
@@ -154,6 +157,5 @@ position = Vector2(-0.063531876, -3.3719165)
 shape = SubResource("RectangleShape2D_kjinu")
 debug_color = Color(0.9941916, 0.16080266, 0.8098214, 0.41960785)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
 [connection signal="body_entered" from="KillBox" to="." method="_on_kill_box_body_entered"]

@@ -176,10 +176,8 @@ script = ExtResource("1_onrkg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["player"]]
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"dead"
+animation = &"idle"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.54414815
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="AnimatedSprite2D"]
 position = Vector2(1.260788, 0.25498962)
